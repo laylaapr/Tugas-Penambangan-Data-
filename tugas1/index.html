@@ -13,7 +13,7 @@
         <meta name="description" content="Repository Matakuliah Data Mining">
       
       
-        <link rel="canonical" href="https://laylaapr.github.io/Tugas-Penambangan-Data-/Statistik/">
+        <link rel="canonical" href="https://laylaapr.github.io/Tugas-Penambangan-Data-/tugas1/">
       
       
         <meta name="author" content="Lailatul Badria D.A.A">
@@ -315,20 +315,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mengukur-sebaran-data" class="md-nav__link">
-    Mengukur Sebaran Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rentang-range-quartil-and-rentang-interquartile" class="md-nav__link">
-    Rentang (Range), Quartil, and Rentang Interquartile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#variansi-dan-standar-deviasi" class="md-nav__link">
     Variansi dan Standar Deviasi
   </a>
@@ -359,7 +345,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../jarakdata/" title="Mengukur jarak data" class="md-nav__link">
+    <a href="../jrak/" title="Mengukur jarak data" class="md-nav__link">
       Mengukur jarak data
     </a>
   </li>
@@ -407,20 +393,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mengukur-sebaran-data" class="md-nav__link">
-    Mengukur Sebaran Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rentang-range-quartil-and-rentang-interquartile" class="md-nav__link">
-    Rentang (Range), Quartil, and Rentang Interquartile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#variansi-dan-standar-deviasi" class="md-nav__link">
     Variansi dan Standar Deviasi
   </a>
@@ -451,48 +423,38 @@
               
                 
                 
-                <h1 id="mean-modus-dan-median"><strong>Mean, Modus dan Median</strong><a class="headerlink" href="#mean-modus-dan-median" title="Permanent link">&para;</a></h1>
-<h4 id="rumus-mean-rata-rata-data-kelompok"><strong>Rumus Mean (Rata-rata) Data Kelompok</strong><a class="headerlink" href="#rumus-mean-rata-rata-data-kelompok" title="Permanent link">&para;</a></h4>
+                <h1 id="mean-modus-dan-median">Mean, Modus dan Median<a class="headerlink" href="#mean-modus-dan-median" title="Permanent link">&para;</a></h1>
+<h3 id="rumus-mean-rata-rata-data-kelompok">Rumus Mean (Rata-rata) Data Kelompok<a class="headerlink" href="#rumus-mean-rata-rata-data-kelompok" title="Permanent link">&para;</a></h3>
 <p>Untuk dapat menentukan mean atau rata rata dari data kelompok maka kita perlu   menjumlahkan semua data kemudian membaginya dengan banyaknya data tersebut.namun, karena penyajian data kelompok tersebut diberikan dalam bentuk yang  berbeda, maka rumus untuk mencari nilai mean (rata rata) untuk data kelompok itu terlihat sedikit  berbeda dengan cara mencari nilai mean (rata rata) pada data tunggal. Rumus mean data kelompok dinyatakan dengan persamaan seperti di bawah.</p>
-<p><img alt="" src="C:\Folder Baru\mean.png" /></p>
-<h4 id="rumus-median-data-kelompok"><strong>Rumus Median Data Kelompok</strong><a class="headerlink" href="#rumus-median-data-kelompok" title="Permanent link">&para;</a></h4>
-<p>Median ialah data tengah setelah diurutkan. Pada data tunggal, nilai median tersebut dapat dicari dengan mengurutkan datanya terlebih dahulu kemudian mencari data yang terletak tepat di tengahnya.cara ini  Hampir sama dengan cara mencari median pada data tunggal, nilai median pada data kelompok juga merupakan nilai tengah dari suatu kumpulan data. Karena bentuk penyajian datanya disajikan dalam bentuk kelompok,maka datanya tidak dapat diurutkan seperti pada data tunggal. Dengan demikian, agar dapat mencari nilai median dari suatu data kelompok diperlukan  sebuah rumus. Rumus median data kelompok ialah sebagai berikut.</p>
-<p><img alt="" src="C:\Folder Baru\median.png" /></p>
-<h4 id="rumus-modus-data-kelompok">Rumus Modus Data Kelompok<a class="headerlink" href="#rumus-modus-data-kelompok" title="Permanent link">&para;</a></h4>
-<p>Modus ialah nilai data yang paling sering muncul atau data yang memiliki nilai frekuensi paling tinggi.untuk mencari nilai modus pada data tunggal sangat mudah,yaitu dengan Cara mencari nilai data dengan frekuensi paling banyak.namun untuk mencari mencari nilai modus  pada data kelompok tidak lah semudah kita mencari nilai modus pada data tunggal. Hal ini dikarenakan bentuk penyajian data kelompok yang disajikan dalam sebuah rentang kelas. Sehingga, nilai modus data kelompok tidak mudah untuk langsung didapatkan dan untuk menemukan nilai modus dari data kelompok maka kita perlu menggunakan sebuah rumus. Rumus modus data kelompok dapat dilihat seperti persamaan di bawah ini.
-$$
-\text { mean }-\text { mode } \approx 3 \times(\text { mean }-\text { median }) p
+<p>$$
+\bar x ={\sum \limits_{i=1}^{n} x_i \over N} = {x_1 + x_2 + x_3 + ... + x_n \over N}
 $$</p>
-<h4 id="mengukur-sebaran-data">Mengukur Sebaran Data<a class="headerlink" href="#mengukur-sebaran-data" title="Permanent link">&para;</a></h4>
-<p>Kita sekarang membahas ukuran ukuran untuk menilai dispersi atau penyebaran data numerik. Ukuran-ukuran itu adalah rentang (range), kuantil, kuartil, persentil, dan rentang interkuartil. Semua itu adalah ringkasan lima angka, yang dapat ditunjukkan dengan boxplot, berguna dalam mengidentifikasi pencilan (outlier). Varians dan standar deviasi juga menunjukkan sebaran distribusi data.</p>
-<h4 id="rentang-range-quartil-and-rentang-interquartile"><em>Rentang (Range), Quartil, and Rentang Interquartile</em><a class="headerlink" href="#rentang-range-quartil-and-rentang-interquartile" title="Permanent link">&para;</a></h4>
-<p>Misalkan x1,x2,..xNx1,x2,..xN adalah sekumpulan pengamatan untuk atribut numerik, XX. Rentang adalah selisih antara nilai terbesar (maks ()) dan terkecil (min ()). Misalkan data untuk atribut X diurutkan dalam urutan naik.Bagilah data berdasarkan titik titik tertentu sehingga membagi distribusi data ukuran yang sama, seperti pada Gambar dibawah. Titik data ini disebut kuantil. 2-quantile adalah titik data yang membagi bagian bawah dan atas dari distribusi data. Ini sama dengan median. 4-kuantil adalah tiga titik data yang membagi distribusi data menjadi empat bagian yang sama; setiap bagian mewakili seperempat dari distribusi data. Ini lebih sering disebut sebagai kuartil. 100-kuantil lebih sering disebut sebagai persentil; mereka membagi distribusi data menjadi 100 data berukuran sama. Median, kuartil, dan persentil adalah bentuk kuantil yang paling banyak digunakan.</p>
-<p>Kuartil memberikan gambaran pusat distribus, penyebaran, dan bentuk distribusi. Kuartil satu, dilambangkan oleh Q1, adalah persentil ke-25. Nilai ini menunjukan 25% terendah dari data. Kuartil ketiga, dilambangkan oleh Q3, adalah persentil ke-75 - itu memisahkan data 75% dari terendah data (atau 25% dari tertinggi data. Kuartil kedua adalah persentil ke-50 atau median dari distribusi data.</p>
-<p>Jarak antara kuartil pertama dan ketiga adalah ukuran yang menyatakan rentang yang dicakup oleh bagian tengah data. Jarak ini disebut rentang interkuartil (IQR) dan dinyatakan dengan
+<h3 id="rumus-median-data-kelompok">Rumus Median Data Kelompok<a class="headerlink" href="#rumus-median-data-kelompok" title="Permanent link">&para;</a></h3>
+<p>Median ialah data tengah setelah diurutkan. Pada data tunggal, nilai median tersebut dapat dicari dengan mengurutkan datanya terlebih dahulu kemudian mencari data yang terletak tepat di tengahnya.cara ini Hampir sama dengan cara mencari median pada data tunggal, nilai median pada data kelompok juga merupakan nilai tengah dari suatu kumpulan data. Karena bentuk penyajian datanya disajikan dalam bentuk kelompok,maka datanya tidak dapat diurutkan seperti pada data tunggal. Dengan demikian, agar dapat mencari nilai median dari suatu data kelompok diperlukan sebuah rumus. Rumus median data kelompok ialah sebagai berikut.
 $$
-I Q R = Q _ { 3 } - Q _ { 1 } 
-$$
-Dengan ukuran a kuartil Q1 dan Q3, dan median kita dapat mengidentifikasikan ada tidaknya pencilan (outlier) pada suatu data. Data pencilan atau outlier nilai data biasanya ada di setidaknya 1,5 × IQR di atas kuartil ketiga atau di bawah kuartil pertama</p>
-<p>Karena Q1, median, dan Q3 tidak berisi informasi tentang titik akhir (mis., Ekor) data, ringkasan yang lebih lengkap dari bentuk distribusi dapat diperoleh dengan memberikan nilai data terendah dan tertinggi juga. Ini dikenal sebagai ringkasan lima angka. Ringkasan lima nomor distribusi terdiri dari median (Q2), kuartil Q1 dan Q3, dan data terkecil dan terbesar( Minimum, Q1, Median, Q3, Maksimum)</p>
-<p>Boxplots adalah cara populer untuk memvisualisasikan distribusi. Boxplot menggabungkan ringkasan lima angka sebagai berikut: - Ujung kotak adalah kuartil dan panjang kotak adalah rentang interkuartil. - Median ditandai dengan garis di dalam kotak. - Dua garis (disebut whiskers) di luar kotak memanjang ke pengamatan terkecil (Minimum) dan terbesar (Maksimum).</p>
-<h4 id="variansi-dan-standar-deviasi">Variansi dan Standar Deviasi<a class="headerlink" href="#variansi-dan-standar-deviasi" title="Permanent link">&para;</a></h4>
+Me=Q_2 =\left( \begin{matrix}
+  n+1 \over 2
+\end{matrix} \right), jika\quad n\quad ganjil
+$$</p>
+<p>$$
+Me=Q_2 =\left( \begin{matrix}
+  {xn \over 2 } {xn+1\over 2} \over 2
+\end{matrix} \right), jika\quad n\quad genap
+$$</p>
+<h3 id="rumus-modus-data-kelompok">Rumus Modus Data Kelompok<a class="headerlink" href="#rumus-modus-data-kelompok" title="Permanent link">&para;</a></h3>
+<p>Modus ialah nilai data yang paling sering muncul atau data yang memiliki nilai frekuensi paling tinggi.untuk mencari nilai modus pada data tunggal sangat mudah,yaitu dengan Cara mencari nilai data dengan frekuensi paling banyak.namun untuk mencari mencari nilai modus pada data kelompok tidak lah semudah kita mencari nilai modus pada data tunggal. Hal ini dikarenakan bentuk penyajian data kelompok yang disajikan dalam sebuah rentang kelas. Sehingga, nilai modus data kelompok tidak mudah untuk langsung didapatkan dan untuk menemukan nilai modus dari data kelompok maka kita perlu menggunakan sebuah rumus. Rumus modus data kelompok dapat dilihat seperti persamaan di bawah ini. </p>
+<p>$$
+M_o = Tb + p{b_1 \over b_1 + b_2}
+$$</p>
+<h3 id="variansi-dan-standar-deviasi">Variansi dan Standar Deviasi<a class="headerlink" href="#variansi-dan-standar-deviasi" title="Permanent link">&para;</a></h3>
 <p>Variansi dan standar deviasi adalah ukuran penyebaran data. Nilai-nilai tersebut menunjukkan bagaimana penyebaran distribusi data. Standar Deviasi yang rendah berarti bahwa pengamatan data cenderung sangat dekat dengan rata-rata, sedangkan deviasi standar yang tinggi menunjukkan data tersebar di sejumlah nilai-nilai besar.</p>
-<p>Varian dari pengamatan N,x1,x2,...,xNN,x1,x2,...,xN, untuk atribut numerik X adalah
-$$
+<p>Varian dari pengamatan N,x1,x2,...,xN, untuk atribut numerik X adalah</p>
+<p>$$
 \sigma ^ { 2 } = \frac { 1 } { N } \sum _ { i = 1 } ^ { N } ( x _ { i } - \overline { x } ) ^ { 2 } = ( \frac { 1 } { N } \sum _ { i = 1 } ^ { N } x _ { i } ^ { 2 } ) - \overline { x } ^ { 2 }
-$$
-Sifat dasar dari standar deviasi, σ, sebagai ukuran penyebaran data adalah sebagai berikut:</p>
-<ul>
-<li>
-<p>Ukuran σ mengeukur sebaran disekitar rata-rata dan harus dipertimbangkan bila rata-rata dipilih sebagai ukuran pusat data</p>
-</li>
-<li>
-<p>σ=0 hanya jika tidak ada penyebaran data, hanya terjadi ketika semua pengamatan memiliki nilai sama, Jika tidak maka σ&gt;0</p>
-</li>
-</ul>
-<h4 id="skewness"><em>Skewness</em><a class="headerlink" href="#skewness" title="Permanent link">&para;</a></h4>
-<p>Derajat distorsi dari kurva lonceng simetris atau distribusi normal. Ini mengukur kurangnya simetri dalam distribusi data Untuk menghitung derajat distorisi dapat menggunakan Koefisien Kemencengan Pearson yang diperoleh dengan menggunakan nilai selisih rata-rata dengan modus dibagi simpangan baku. Koefisien Kemencengan Pearson dirumuskan sebagai berikut
-$$
+$$</p>
+<h3 id="skewness">Skewness<a class="headerlink" href="#skewness" title="Permanent link">&para;</a></h3>
+<p>Derajat distorsi dari kurva lonceng simetris atau distribusi normal. Ini mengukur kurangnya simetri dalam distribusi data Untuk menghitung derajat distorisi dapat menggunakan Koefisien Kemencengan Pearson yang diperoleh dengan menggunakan nilai selisih rata-rata dengan modus dibagi simpangan baku. Koefisien Kemencengan Pearson dirumuskan sebagai berikut </p>
+<p>$$
 s k=\frac{\overline{X}-M o}{s}
 $$
 dengan
@@ -503,6 +465,28 @@ maka
 $$
 s k \approx \frac{3(\overline{X}-M e)}{s}
 $$</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;stats&quot;</span><span class="p">:[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">,</span><span class="s1">&#39;Mean&#39;</span><span class="p">,</span><span class="s1">&#39;Standart Deviasi&#39;</span><span class="p">,</span> <span class="s1">&#39;Variasi&#39;</span><span class="p">,</span><span class="s1">&#39;Skewnes&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;Quartile 1&#39;</span><span class="p">,</span><span class="s1">&#39;Quartile 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Quartile 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Median&#39;</span><span class="p">,</span><span class="s1">&#39;Modus&#39;</span><span class="p">]}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">(),</span><span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">skew</span><span class="p">(),</span><span class="mi">2</span><span class="p">),</span> 
+               <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">stats</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">mode</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">kd</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">kd</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide_index</span><span class="p">()</span>
+</pre></div>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$$','$$']]}
+});
+</script>
+
+<p><script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script></p>
                 
                   
                 
@@ -538,7 +522,7 @@ $$</p>
           </a>
         
         
-          <a href="../jarakdata/" title="Mengukur jarak data" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../jrak/" title="Mengukur jarak data" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
