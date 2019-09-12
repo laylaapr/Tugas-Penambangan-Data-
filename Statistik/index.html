@@ -1,0 +1,592 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Repository Matakuliah Data Mining">
+      
+      
+        <link rel="canonical" href="https://laylaapr.github.io/Tugas-Penambangan-Data-/Statistik/">
+      
+      
+        <meta name="author" content="Lailatul Badria D.A.A">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>Statistik deskriptif - Lailatul Badria D.A.A</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../manifest.webmanifest">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-XXXXXXXX-X", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#mean-modus-dan-median" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Lailatul Badria D.A.A" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Lailatul Badria D.A.A
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Statistik deskriptif
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Lailatul Badria D.A.A
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Lailatul Badria D.A.A" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Lailatul Badria D.A.A
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Lailatul Badria D.A.A
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Statistik deskriptif
+      </label>
+    
+    <a href="./" title="Statistik deskriptif" class="md-nav__link md-nav__link--active">
+      Statistik deskriptif
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rumus-mean-rata-rata-data-kelompok" class="md-nav__link">
+    Rumus Mean (Rata-rata) Data Kelompok
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rumus-median-data-kelompok" class="md-nav__link">
+    Rumus Median Data Kelompok
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rumus-modus-data-kelompok" class="md-nav__link">
+    Rumus Modus Data Kelompok
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mengukur-sebaran-data" class="md-nav__link">
+    Mengukur Sebaran Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rentang-range-quartil-and-rentang-interquartile" class="md-nav__link">
+    Rentang (Range), Quartil, and Rentang Interquartile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variansi-dan-standar-deviasi" class="md-nav__link">
+    Variansi dan Standar Deviasi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skewness" class="md-nav__link">
+    Skewness
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../jarakdata/" title="Mengukur jarak data" class="md-nav__link">
+      Mengukur jarak data
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rumus-mean-rata-rata-data-kelompok" class="md-nav__link">
+    Rumus Mean (Rata-rata) Data Kelompok
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rumus-median-data-kelompok" class="md-nav__link">
+    Rumus Median Data Kelompok
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rumus-modus-data-kelompok" class="md-nav__link">
+    Rumus Modus Data Kelompok
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mengukur-sebaran-data" class="md-nav__link">
+    Mengukur Sebaran Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rentang-range-quartil-and-rentang-interquartile" class="md-nav__link">
+    Rentang (Range), Quartil, and Rentang Interquartile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variansi-dan-standar-deviasi" class="md-nav__link">
+    Variansi dan Standar Deviasi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skewness" class="md-nav__link">
+    Skewness
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="mean-modus-dan-median"><strong>Mean, Modus dan Median</strong><a class="headerlink" href="#mean-modus-dan-median" title="Permanent link">&para;</a></h1>
+<h4 id="rumus-mean-rata-rata-data-kelompok"><strong>Rumus Mean (Rata-rata) Data Kelompok</strong><a class="headerlink" href="#rumus-mean-rata-rata-data-kelompok" title="Permanent link">&para;</a></h4>
+<p>Untuk dapat menentukan mean atau rata rata dari data kelompok maka kita perlu   menjumlahkan semua data kemudian membaginya dengan banyaknya data tersebut.namun, karena penyajian data kelompok tersebut diberikan dalam bentuk yang  berbeda, maka rumus untuk mencari nilai mean (rata rata) untuk data kelompok itu terlihat sedikit  berbeda dengan cara mencari nilai mean (rata rata) pada data tunggal. Rumus mean data kelompok dinyatakan dengan persamaan seperti di bawah.</p>
+<p><img alt="" src="C:\Folder Baru\mean.png" /></p>
+<h4 id="rumus-median-data-kelompok"><strong>Rumus Median Data Kelompok</strong><a class="headerlink" href="#rumus-median-data-kelompok" title="Permanent link">&para;</a></h4>
+<p>Median ialah data tengah setelah diurutkan. Pada data tunggal, nilai median tersebut dapat dicari dengan mengurutkan datanya terlebih dahulu kemudian mencari data yang terletak tepat di tengahnya.cara ini  Hampir sama dengan cara mencari median pada data tunggal, nilai median pada data kelompok juga merupakan nilai tengah dari suatu kumpulan data. Karena bentuk penyajian datanya disajikan dalam bentuk kelompok,maka datanya tidak dapat diurutkan seperti pada data tunggal. Dengan demikian, agar dapat mencari nilai median dari suatu data kelompok diperlukan  sebuah rumus. Rumus median data kelompok ialah sebagai berikut.</p>
+<p><img alt="" src="C:\Folder Baru\median.png" /></p>
+<h4 id="rumus-modus-data-kelompok">Rumus Modus Data Kelompok<a class="headerlink" href="#rumus-modus-data-kelompok" title="Permanent link">&para;</a></h4>
+<p>Modus ialah nilai data yang paling sering muncul atau data yang memiliki nilai frekuensi paling tinggi.untuk mencari nilai modus pada data tunggal sangat mudah,yaitu dengan Cara mencari nilai data dengan frekuensi paling banyak.namun untuk mencari mencari nilai modus  pada data kelompok tidak lah semudah kita mencari nilai modus pada data tunggal. Hal ini dikarenakan bentuk penyajian data kelompok yang disajikan dalam sebuah rentang kelas. Sehingga, nilai modus data kelompok tidak mudah untuk langsung didapatkan dan untuk menemukan nilai modus dari data kelompok maka kita perlu menggunakan sebuah rumus. Rumus modus data kelompok dapat dilihat seperti persamaan di bawah ini.
+$$
+\text { mean }-\text { mode } \approx 3 \times(\text { mean }-\text { median }) p
+$$</p>
+<h4 id="mengukur-sebaran-data">Mengukur Sebaran Data<a class="headerlink" href="#mengukur-sebaran-data" title="Permanent link">&para;</a></h4>
+<p>Kita sekarang membahas ukuran ukuran untuk menilai dispersi atau penyebaran data numerik. Ukuran-ukuran itu adalah rentang (range), kuantil, kuartil, persentil, dan rentang interkuartil. Semua itu adalah ringkasan lima angka, yang dapat ditunjukkan dengan boxplot, berguna dalam mengidentifikasi pencilan (outlier). Varians dan standar deviasi juga menunjukkan sebaran distribusi data.</p>
+<h4 id="rentang-range-quartil-and-rentang-interquartile"><em>Rentang (Range), Quartil, and Rentang Interquartile</em><a class="headerlink" href="#rentang-range-quartil-and-rentang-interquartile" title="Permanent link">&para;</a></h4>
+<p>Misalkan x1,x2,..xNx1,x2,..xN adalah sekumpulan pengamatan untuk atribut numerik, XX. Rentang adalah selisih antara nilai terbesar (maks ()) dan terkecil (min ()). Misalkan data untuk atribut X diurutkan dalam urutan naik.Bagilah data berdasarkan titik titik tertentu sehingga membagi distribusi data ukuran yang sama, seperti pada Gambar dibawah. Titik data ini disebut kuantil. 2-quantile adalah titik data yang membagi bagian bawah dan atas dari distribusi data. Ini sama dengan median. 4-kuantil adalah tiga titik data yang membagi distribusi data menjadi empat bagian yang sama; setiap bagian mewakili seperempat dari distribusi data. Ini lebih sering disebut sebagai kuartil. 100-kuantil lebih sering disebut sebagai persentil; mereka membagi distribusi data menjadi 100 data berukuran sama. Median, kuartil, dan persentil adalah bentuk kuantil yang paling banyak digunakan.</p>
+<p>Kuartil memberikan gambaran pusat distribus, penyebaran, dan bentuk distribusi. Kuartil satu, dilambangkan oleh Q1, adalah persentil ke-25. Nilai ini menunjukan 25% terendah dari data. Kuartil ketiga, dilambangkan oleh Q3, adalah persentil ke-75 - itu memisahkan data 75% dari terendah data (atau 25% dari tertinggi data. Kuartil kedua adalah persentil ke-50 atau median dari distribusi data.</p>
+<p>Jarak antara kuartil pertama dan ketiga adalah ukuran yang menyatakan rentang yang dicakup oleh bagian tengah data. Jarak ini disebut rentang interkuartil (IQR) dan dinyatakan dengan
+$$
+I Q R = Q _ { 3 } - Q _ { 1 } 
+$$
+Dengan ukuran a kuartil Q1 dan Q3, dan median kita dapat mengidentifikasikan ada tidaknya pencilan (outlier) pada suatu data. Data pencilan atau outlier nilai data biasanya ada di setidaknya 1,5 × IQR di atas kuartil ketiga atau di bawah kuartil pertama</p>
+<p>Karena Q1, median, dan Q3 tidak berisi informasi tentang titik akhir (mis., Ekor) data, ringkasan yang lebih lengkap dari bentuk distribusi dapat diperoleh dengan memberikan nilai data terendah dan tertinggi juga. Ini dikenal sebagai ringkasan lima angka. Ringkasan lima nomor distribusi terdiri dari median (Q2), kuartil Q1 dan Q3, dan data terkecil dan terbesar( Minimum, Q1, Median, Q3, Maksimum)</p>
+<p>Boxplots adalah cara populer untuk memvisualisasikan distribusi. Boxplot menggabungkan ringkasan lima angka sebagai berikut: - Ujung kotak adalah kuartil dan panjang kotak adalah rentang interkuartil. - Median ditandai dengan garis di dalam kotak. - Dua garis (disebut whiskers) di luar kotak memanjang ke pengamatan terkecil (Minimum) dan terbesar (Maksimum).</p>
+<h4 id="variansi-dan-standar-deviasi">Variansi dan Standar Deviasi<a class="headerlink" href="#variansi-dan-standar-deviasi" title="Permanent link">&para;</a></h4>
+<p>Variansi dan standar deviasi adalah ukuran penyebaran data. Nilai-nilai tersebut menunjukkan bagaimana penyebaran distribusi data. Standar Deviasi yang rendah berarti bahwa pengamatan data cenderung sangat dekat dengan rata-rata, sedangkan deviasi standar yang tinggi menunjukkan data tersebar di sejumlah nilai-nilai besar.</p>
+<p>Varian dari pengamatan N,x1,x2,...,xNN,x1,x2,...,xN, untuk atribut numerik X adalah
+$$
+\sigma ^ { 2 } = \frac { 1 } { N } \sum _ { i = 1 } ^ { N } ( x _ { i } - \overline { x } ) ^ { 2 } = ( \frac { 1 } { N } \sum _ { i = 1 } ^ { N } x _ { i } ^ { 2 } ) - \overline { x } ^ { 2 }
+$$
+Sifat dasar dari standar deviasi, σ, sebagai ukuran penyebaran data adalah sebagai berikut:</p>
+<ul>
+<li>
+<p>Ukuran σ mengeukur sebaran disekitar rata-rata dan harus dipertimbangkan bila rata-rata dipilih sebagai ukuran pusat data</p>
+</li>
+<li>
+<p>σ=0 hanya jika tidak ada penyebaran data, hanya terjadi ketika semua pengamatan memiliki nilai sama, Jika tidak maka σ&gt;0</p>
+</li>
+</ul>
+<h4 id="skewness"><em>Skewness</em><a class="headerlink" href="#skewness" title="Permanent link">&para;</a></h4>
+<p>Derajat distorsi dari kurva lonceng simetris atau distribusi normal. Ini mengukur kurangnya simetri dalam distribusi data Untuk menghitung derajat distorisi dapat menggunakan Koefisien Kemencengan Pearson yang diperoleh dengan menggunakan nilai selisih rata-rata dengan modus dibagi simpangan baku. Koefisien Kemencengan Pearson dirumuskan sebagai berikut
+$$
+s k=\frac{\overline{X}-M o}{s}
+$$
+dengan
+$$
+\overline{X}-M o \approx 3(\overline{X}-M e)
+$$
+maka
+$$
+s k \approx \frac{3(\overline{X}-M e)}{s}
+$$</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="Index" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Index
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../jarakdata/" title="Mengukur jarak data" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Mengukur jarak data
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Lailatul Badria D.A.A
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/laylaapr/" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c648116f.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
