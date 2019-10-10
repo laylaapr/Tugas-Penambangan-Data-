@@ -1,0 +1,2292 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Repository Matakuliah Data Mining">
+      
+      
+        <link rel="canonical" href="https://laylaapr.github.io/Tugas-Penambangan-Data-/naïvebayes/">
+      
+      
+        <meta name="author" content="Lailatul Badria D.A.A">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>Naïve Bayes - Lailatul Badria D.A.A</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+      <link rel="manifest" href="../manifest.webmanifest">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-XXXXXXXX-X", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#naive-bayes" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Lailatul Badria D.A.A" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Lailatul Badria D.A.A
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Naïve Bayes
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Lailatul Badria D.A.A
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Lailatul Badria D.A.A" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Lailatul Badria D.A.A
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://laylaapr.github.io/Tugas-Penambangan-Data-/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Lailatul Badria D.A.A
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../tugas1/" title="Statistik deskriptif" class="md-nav__link">
+      Statistik deskriptif
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../jrak/" title="Mengukur jarak data" class="md-nav__link">
+      Mengukur jarak data
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../selection/" title="Feature selection" class="md-nav__link">
+      Feature selection
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../naïvebayes .md" title="Naïve bayes" class="md-nav__link">
+      Naïve bayes
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    Pre-requisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teorema-naive-bayes" class="md-nav__link">
+    Teorema Naïve Bayes
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampel-data-untuk-di-tes" class="md-nav__link">
+    Sampel data untuk di tes¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifikasi-per-grup-class-target-untuk-data" class="md-nav__link">
+    Identifikasi Per Grup Class Target untuk data¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hitung-probabilitas-prior-dan-likehood" class="md-nav__link">
+    Hitung Probabilitas Prior dan Likehood
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kesimpulan" class="md-nav__link">
+    Kesimpulan¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="naive-bayes">Naïve Bayes<a class="headerlink" href="#naive-bayes" title="Permanent link">&para;</a></h1>
+<p>Naïve Bayes merupakan sebuah pengklasifikasian probabilistik sederhana yang menghitung sekumpulan probabilitas dengan menjumlahkan frekuensi dan kombinasi nilai dari dataset yang diberikan. Algoritma mengunakan teorema Bayes dan mengasumsikan semua atribut independen atau tidak saling ketergantungan yang diberikan oleh nilai pada variabel kelas.</p>
+<p>Definisi lain mengatakan Naïve Bayes merupakan pengklasifikasian dengan metode probabilitas dan statistik yang dikemukan oleh ilmuwan Inggris Thomas Bayes, yaitu memprediksi peluang di masa depan berdasarkan pengalaman di masa sebelumnya.</p>
+<p>Naïve Bayes didasarkan pada asumsi penyederhanaan bahwa nilai atribut secara kondisional saling bebas jika diberikan nilai output. Dengan kata lain, diberikan nilai output, probabilitas mengamati secara bersama adalah produk dari probabilitas individu. </p>
+<p>Keuntungan penggunaan Naive Bayes adalah bahwa metode ini hanya membutuhkan jumlah data pelatihan (Training Data) yang kecil untuk menentukan estimasi paremeter yang diperlukan dalam proses pengklasifikasian. Naive Bayes sering bekerja jauh lebih baik dalam kebanyakan situasi dunia nyata yang kompleks dari pada yang diharapkan.</p>
+<p>Naive Bayes Classifier dinilai bekerja sangat baik dibanding dengan model classifier lainnya, yaitu Naïve Bayes Classifier memiliki tingkat akurasi yg lebih baik dibanding model classifier lainnya.</p>
+<h3 id="pre-requisites">Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pemahaman terhadap dasar-dasar Statistika terutama mengenai Probabilitas/Peluang</li>
+<li>Pemahaman terhadap dasar-dasar teknologi Web,HTML dan CSS</li>
+<li>Pemahaman terhadap dasar-dasar basis data/database, terutama query SQL pada MySQL/mariaDB</li>
+<li>Pemahaman terhadap dasar-dasar pemrograman PHP, terutama fungsi-fungsi koneksi database dan pengelolaan tipe data array</li>
+</ul>
+<h2 id="teorema-naive-bayes">Teorema Naïve Bayes<a class="headerlink" href="#teorema-naive-bayes" title="Permanent link">&para;</a></h2>
+<p>Sebelum menjelaskan <strong>Naïve Bayes Classifier</strong> ini, akan dijelaskan terlebih dahulu <strong>Teorema Bayes</strong> yang menjadi dasar dari metoda tersebut. Pada <strong>Teorema Bayes</strong>, bila terdapat dua kejadian yang terpisah (misalkan <code>X</code> dan <code>H</code>), maka <strong>Teorema Bayes</strong> dirumuskan sebagai berikut.:
+$$
+P(H|X) = \frac{(P(X|H)P(H))}{P(X)}
+$$
+<strong>Keterangan</strong></p>
+<p><strong>Teorema Bayes</strong> sering pula dikembangkan mengingat berlakunya hukum probabilitas total, menjadi seperti berikut:
+$$
+P(\operatorname{C_i|D}) = \frac{\left( P(D|C_i)\right)P(C_i)}{P(D)}
+$$
+<strong>Keterangan</strong></p>
+<p>Untuk menjelaskan <strong>Teorema Naïve Bayes</strong>, perlu diketahui bahwa proses klasifikasi memerlukan sejumlah petunjuk untuk menentukan kelas apa yang cocok bagi <em>sampel</em> yang dianalisis tersebut. Karena itu, <strong>Teorema Bayes</strong> di atas disesuaikan sebagai berikut:</p>
+<p><img alt="img" src="data:image/png;base64,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" /></p>
+<p>Di mana Variabel <code>C</code> merepresentasikan kelas, sementara variabel <code>F1 ... Fn</code> merepresentasikan karakteristik petunjuk yang dibutuhkan untuk melakukan klasifikasi. Maka rumus tersebut menjelaskan bahwa peluang masuknya sampel karakteristik tertentu dalam kelas <code>C</code> (<em>Posterior</em>) adalah peluang munculnya kelas <code>C</code> (sebelum masuknya <em>sampel</em> tersebut, seringkali disebut <em>prior</em>), dikali dengan peluang kemunculan karakteristik-karakteristik <em>sampel</em> pada kelas <code>C</code> (disebut juga <em>likelihood</em>), dibagi dengan peluang kemunculan karakteristik-karakteristik <em>sampel</em> secara global (disebut juga <em>evidence</em>). </p>
+<p>Naive Bayes Classifier atau bisa di sebut sebagai multinomina naive bayes merupakan model penyederhanaan dari algoritma bayes yang cocok dalam pengklasifikasian text atau dokumen.</p>
+<p>P adalah probabilitas yang muncul. Untuk data numerik P adalah:
+$$
+P(x=v|C_k) = \frac{1}{\sqrt{2\pi\sigma^2_k}}\exp\left(-\frac{(v-\mu_k)^2}{2\sigma^2_k}\right)
+$$
+<strong>Contoh Program</strong></p>
+<div class="codehilite"><pre><span></span>python iris = datasets.load_iris() data = [list(s)+[iris.target_names[iris.target[i]]] for i,s in enumerate(iris.data)] dataset = DataFrame(data, columns=iris.feature_names+[&#39;class&#39;]).sample(frac=0.2) table(dataset)
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th align="right">sepal length (cm)</th>
+<th align="right">sepal width (cm)</th>
+<th align="right">petal length (cm)</th>
+<th align="right">petal width (cm)</th>
+<th align="left">class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">7.7</td>
+<td align="right">2.6</td>
+<td align="right">6.9</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">5.4</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.6</td>
+<td align="right">3</td>
+<td align="right">4.4</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">3.8</td>
+<td align="right">6.7</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.2</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3.2</td>
+<td align="right">6</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3.2</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.7</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.3</td>
+<td align="right">4.7</td>
+<td align="right">1.6</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">3.4</td>
+<td align="right">5.4</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">3.5</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.6</td>
+<td align="right">5.6</td>
+<td align="right">1.4</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.9</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">3</td>
+<td align="right">4.2</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.7</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">3.4</td>
+<td align="right">4.5</td>
+<td align="right">1.6</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.8</td>
+<td align="right">4.7</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">3</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.8</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.9</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">2.8</td>
+<td align="right">4.8</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.3</td>
+<td align="right">1.7</td>
+<td align="right">0.5</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<h3 id="sampel-data-untuk-di-tes">Sampel data untuk di tes<a href="https://bimaikhsan.github.io/datamining/naive bayes classifier/#sampel-data-untuk-di-tes">¶</a><a class="headerlink" href="#sampel-data-untuk-di-tes" title="Permanent link">&para;</a></h3>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>python test = [3,5,2,4] print(&quot;sampel data: &quot;, test)
+sampel data: [3, 5, 2, 4]
+</pre></div>
+
+
+<ol>
+<li>
+<h3 id="identifikasi-per-grup-class-target-untuk-data">Identifikasi Per Grup Class Target untuk data<a href="https://bimaikhsan.github.io/datamining/naive bayes classifier/#identifikasi-per-grup-class-target-untuk-data">¶</a><a class="headerlink" href="#identifikasi-per-grup-class-target-untuk-data" title="Permanent link">&para;</a></h3>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>python dataset_classes = {} # table per classes for key,group in dataset.groupby(&#39;class&#39;): mu_s = [group[c].mean() for c in group.columns[:-1]] sigma_s = [group[c].std() for c in group.columns[:-1]] dataset_classes[key] = [group, mu_s, sigma_s] print(key, &quot;===&gt;&quot;) print(&#39;Mu_s =&gt;&#39;, array(mu_s)) print(&#39;Sigma_s =&gt;&#39;, array(sigma_s)) table(group)
+setosa ===&gt; Mu_s =&gt; [5.03636364 3.39090909 1.56363636 0.26363636] Sigma_s =&gt; [0.33248377 0.221154 0.15666989 0.11200649]
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th align="right">sepal length (cm)</th>
+<th align="right">sepal width (cm)</th>
+<th align="right">petal length (cm)</th>
+<th align="right">petal width (cm)</th>
+<th align="left">class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">3.5</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.9</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.7</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.3</td>
+<td align="right">1.7</td>
+<td align="right">0.5</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<p>versicolor ===&gt; Mu_s =&gt; [6.12222222 2.95555556 4.47777778 1.38888889] Sigma_s =&gt; [0.38005848 0.35394601 0.29486343 0.24720662]</p>
+<table>
+<thead>
+<tr>
+<th align="right">sepal length (cm)</th>
+<th align="right">sepal width (cm)</th>
+<th align="right">petal length (cm)</th>
+<th align="right">petal width (cm)</th>
+<th align="left">class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">6.6</td>
+<td align="right">3</td>
+<td align="right">4.4</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.2</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3.2</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.3</td>
+<td align="right">4.7</td>
+<td align="right">1.6</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">3</td>
+<td align="right">4.2</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">3.4</td>
+<td align="right">4.5</td>
+<td align="right">1.6</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.8</td>
+<td align="right">4.7</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.9</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">2.8</td>
+<td align="right">4.8</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span>virginica ===&gt; Mu_s =&gt; [6.65 3.01 5.67 1.98] Sigma_s =&gt; [0.68677993 0.38715486 0.69610025 0.28982753]
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th align="right">sepal length (cm)</th>
+<th align="right">sepal width (cm)</th>
+<th align="right">petal length (cm)</th>
+<th align="right">petal width (cm)</th>
+<th align="left">class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">7.7</td>
+<td align="right">2.6</td>
+<td align="right">6.9</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">5.4</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">3.8</td>
+<td align="right">6.7</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3.2</td>
+<td align="right">6</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.7</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">3.4</td>
+<td align="right">5.4</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.6</td>
+<td align="right">5.6</td>
+<td align="right">1.4</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">3</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.8</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hitung-probabilitas-prior-dan-likehood">Hitung Probabilitas Prior dan Likehood<a class="headerlink" href="#hitung-probabilitas-prior-dan-likehood" title="Permanent link">&para;</a></h3>
+<p>`python def numericalPriorProbability(v, mu, sigma): return (1.0/sqrt(2 * pi * (sigma <strong>2))*exp(-((v-mu)</strong>2)/(2<em>(sigma</em>*2))))</p>
+<p>def categoricalProbability(sample,universe): return sample.shape[0]/universe.shape[0]</p>
+<p>Ps = ([[y]+[numericalPriorProbability(x, d[1][i], d[2][i]) for i,x in enumerate(test)]+ [categoricalProbability(d[0],dataset)] for y,d in dataset_classes.items()])</p>
+<p>table(DataFrame(Ps, columns=["classes"]+["P( %d | C )" % d for d in test]+["P( C )"])) `</p>
+<table>
+<thead>
+<tr>
+<th align="left">classes</th>
+<th align="right">P( 3 | C )</th>
+<th align="right">P( 5 | C )</th>
+<th align="right">P( 2 | C )</th>
+<th align="right">P( 4 | C )</th>
+<th align="right">P( C )</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">setosa</td>
+<td align="right">8.58066e-09</td>
+<td align="right">5.76458e-12</td>
+<td align="right">0.0526488</td>
+<td align="right">8.1872e-242</td>
+<td align="right">0.366667</td>
+</tr>
+<tr>
+<td align="left">versicolor</td>
+<td align="right">2.32391e-15</td>
+<td align="right">6.41354e-08</td>
+<td align="right">6.27963e-16</td>
+<td align="right">9.58684e-25</td>
+<td align="right">0.3</td>
+</tr>
+<tr>
+<td align="left">virginica</td>
+<td align="right">4.27211e-07</td>
+<td align="right">1.88775e-06</td>
+<td align="right">5.27627e-07</td>
+<td align="right">3.89569e-11</td>
+<td align="right">0.333333</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<h3 id="kesimpulan">Kesimpulan<a href="https://bimaikhsan.github.io/datamining/naive bayes classifier/#kesimpulan">¶</a><a class="headerlink" href="#kesimpulan" title="Permanent link">&para;</a></h3>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>python Pss = ([[r[0], prod(r[1:])] for r in Ps]) PDss = DataFrame(Pss, columns=[&#39;class&#39;, &#39;probability&#39;]).sort_values(&#39;probability&#39;)[::-1] table(PDss)
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">class</th>
+<th align="right">probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">virginica</td>
+<td align="right">5.52556e-30</td>
+</tr>
+<tr>
+<td align="left">versicolor</td>
+<td align="right">2.69183e-62</td>
+</tr>
+<tr>
+<td align="left">setosa</td>
+<td align="right">7.81778e-263</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span>python print(&quot;Prediksi Bayes untuk&quot;, test, &quot;adalah&quot;, PDss.values[0,0])
+Prediksi Bayes untuk [3, 5, 2, 4] adalah virginica
+</pre></div>
+
+
+<p>## Naive Bayes untuk Data Iris</p>
+<p>`python def predict(sampel): priorLikehoods = ([[y]+[numericalPriorProbability(x, d[1][i], d[2][i]) for i,x in enumerate(sampel)]+ [categoricalProbability(d[0],dataset)] for y,d in dataset_classes.items()]) products = ([[r[0], prod(r[1:])] for r in priorLikehoods]) result = DataFrame(products, columns=['class', 'probability']).sort_values('probability')[::-1] return result.values[0,0]</p>
+<p>dataset_test = DataFrame([list(d)+[predict(d[:4])] for d in data], columns=list(dataset.columns)+['predicted class (by predict())']) table(dataset_test) `</p>
+<table>
+<thead>
+<tr>
+<th align="right">sepal length (cm)</th>
+<th align="right">sepal width (cm)</th>
+<th align="right">petal length (cm)</th>
+<th align="right">petal width (cm)</th>
+<th align="left">class</th>
+<th align="left">predicted class (by predict())</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.3</td>
+<td align="right">3</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">4</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.7</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.6</td>
+<td align="right">1</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.3</td>
+<td align="right">1.7</td>
+<td align="right">0.5</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.9</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">3.5</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.1</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">4.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">4.2</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.2</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">3.5</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">3</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.5</td>
+<td align="right">1.3</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.5</td>
+<td align="right">2.3</td>
+<td align="right">1.3</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.5</td>
+<td align="right">1.6</td>
+<td align="right">0.6</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.9</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.2</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5.3</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.3</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+<td align="left">setosa</td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="right">3.2</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">3.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">4.9</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.3</td>
+<td align="right">4</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">2.8</td>
+<td align="right">4.6</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.8</td>
+<td align="right">4.5</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.3</td>
+<td align="right">4.7</td>
+<td align="right">1.6</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">2.4</td>
+<td align="right">3.3</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.6</td>
+<td align="right">2.9</td>
+<td align="right">4.6</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">2.7</td>
+<td align="right">3.9</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">3.5</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3</td>
+<td align="right">4.2</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.2</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.9</td>
+<td align="right">3.6</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.1</td>
+<td align="right">4.4</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">3</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">4.1</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.5</td>
+<td align="right">3.9</td>
+<td align="right">1.1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3.2</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.8</td>
+<td align="right">4</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.5</td>
+<td align="right">4.9</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.8</td>
+<td align="right">4.7</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.9</td>
+<td align="right">4.3</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.6</td>
+<td align="right">3</td>
+<td align="right">4.4</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">2.8</td>
+<td align="right">4.8</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">1.7</td>
+<td align="left">versicolor</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.9</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.6</td>
+<td align="right">3.5</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.4</td>
+<td align="right">3.8</td>
+<td align="right">1.1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.4</td>
+<td align="right">3.7</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">3.9</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.6</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">3.4</td>
+<td align="right">4.5</td>
+<td align="right">1.6</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.1</td>
+<td align="right">4.7</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.3</td>
+<td align="right">4.4</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">3</td>
+<td align="right">4.1</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.5</td>
+<td align="right">4</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.6</td>
+<td align="right">4.4</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">3</td>
+<td align="right">4.6</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.6</td>
+<td align="right">4</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">2.3</td>
+<td align="right">3.3</td>
+<td align="right">1</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.7</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">3</td>
+<td align="right">4.2</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.9</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">2.9</td>
+<td align="right">4.3</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">2.5</td>
+<td align="right">3</td>
+<td align="right">1.1</td>
+<td align="left">versicolor</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.8</td>
+<td align="right">4.1</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.3</td>
+<td align="right">6</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.1</td>
+<td align="right">3</td>
+<td align="right">5.9</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.9</td>
+<td align="right">5.6</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.8</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.6</td>
+<td align="right">3</td>
+<td align="right">6.6</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">2.5</td>
+<td align="right">4.5</td>
+<td align="right">1.7</td>
+<td align="left">virginica</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">7.3</td>
+<td align="right">2.9</td>
+<td align="right">6.3</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">2.5</td>
+<td align="right">5.8</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3.6</td>
+<td align="right">6.1</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3.2</td>
+<td align="right">5.1</td>
+<td align="right">2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.7</td>
+<td align="right">5.3</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">3</td>
+<td align="right">5.5</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.5</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.8</td>
+<td align="right">5.1</td>
+<td align="right">2.4</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">3.2</td>
+<td align="right">5.3</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.5</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">3.8</td>
+<td align="right">6.7</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">2.6</td>
+<td align="right">6.9</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.2</td>
+<td align="right">5</td>
+<td align="right">1.5</td>
+<td align="left">virginica</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.2</td>
+<td align="right">5.7</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.8</td>
+<td align="right">4.9</td>
+<td align="right">2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">2.8</td>
+<td align="right">6.7</td>
+<td align="right">2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.7</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.3</td>
+<td align="right">5.7</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3.2</td>
+<td align="right">6</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">2.8</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">3</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.8</td>
+<td align="right">5.6</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3</td>
+<td align="right">5.8</td>
+<td align="right">1.6</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.4</td>
+<td align="right">2.8</td>
+<td align="right">6.1</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.9</td>
+<td align="right">3.8</td>
+<td align="right">6.4</td>
+<td align="right">2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.8</td>
+<td align="right">5.6</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.8</td>
+<td align="right">5.1</td>
+<td align="right">1.5</td>
+<td align="left">virginica</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.6</td>
+<td align="right">5.6</td>
+<td align="right">1.4</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">3</td>
+<td align="right">6.1</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.4</td>
+<td align="right">5.6</td>
+<td align="right">2.4</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">3.1</td>
+<td align="right">5.5</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">versicolor</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">5.4</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.1</td>
+<td align="right">5.6</td>
+<td align="right">2.4</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">5.1</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">3.2</td>
+<td align="right">5.9</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.3</td>
+<td align="right">5.7</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3</td>
+<td align="right">5.2</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.5</td>
+<td align="right">5</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.2</td>
+<td align="right">2</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">3.4</td>
+<td align="right">5.4</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3</td>
+<td align="right">5.1</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+<td align="left">virginica</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span>python corrects = dataset_test.loc[dataset_test[&#39;class&#39;] == dataset_test[&#39;predicted class (by predict())&#39;]].shape[0] print(&#39;Prediksi Training Bayes: %d of %d == %f %%&#39; % (corrects, len(data), corrects / len(data) * 100))
+Prediksi Training Bayes: 141 of 150 == 94.000000 %
+</pre></div>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$$','$$']]}
+});
+</script>
+
+<p><script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Lailatul Badria D.A.A
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/laylaapr/" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c648116f.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
