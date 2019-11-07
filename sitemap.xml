@@ -2,27 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/</loc>
-     <lastmod>2019-10-10</lastmod>
+     <lastmod>2019-11-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/tugas1/</loc>
-     <lastmod>2019-10-10</lastmod>
+     <lastmod>2019-11-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/jrak/</loc>
-     <lastmod>2019-10-10</lastmod>
+     <lastmod>2019-11-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/selection/</loc>
-     <lastmod>2019-10-10</lastmod>
+     <lastmod>2019-11-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/naïvebayes/</loc>
-     <lastmod>2019-10-10</lastmod>
+     <lastmod>2019-11-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/knn/</loc>
+     <lastmod>2019-11-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
