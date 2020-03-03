@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-     <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/</loc>
-     <lastmod>2019-11-07</lastmod>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
+     <loc>https://laylaapr.github.io/Tugas/</loc>
+     <lastmod>2020-03-03</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/tugas1/</loc>
-     <lastmod>2019-11-07</lastmod>
+    </url><url>
+     <loc>https://laylaapr.github.io/Tugas/tugas1/</loc>
+     <lastmod>2020-03-03</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/jrak/</loc>
-     <lastmod>2019-11-07</lastmod>
+    </url><url>
+     <loc>https://laylaapr.github.io/Tugas/jrak/</loc>
+     <lastmod>2020-03-03</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/selection/</loc>
-     <lastmod>2019-11-07</lastmod>
+    </url><url>
+     <loc>https://laylaapr.github.io/Tugas/selection/</loc>
+     <lastmod>2020-03-03</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/naïvebayes/</loc>
-     <lastmod>2019-11-07</lastmod>
+    </url><url>
+     <loc>https://laylaapr.github.io/Tugas/na%C3%AFvebayes/</loc>
+     <lastmod>2020-03-03</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://laylaapr.github.io/Tugas-Penambangan-Data-/knn/</loc>
-     <lastmod>2019-11-07</lastmod>
+    </url><url>
+     <loc>https://laylaapr.github.io/Tugas/knn/</loc>
+     <lastmod>2020-03-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://laylaapr.github.io/Tugas/Home/</loc>
+     <lastmod>2020-03-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://laylaapr.github.io/Tugas/error/</loc>
+     <lastmod>2020-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
